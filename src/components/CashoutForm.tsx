@@ -30,6 +30,10 @@ export default function CashoutForm({ openCashoutForm, setOpenCashoutForm }: Cas
     )
   }, [details.data])
 
+  useEffect(() => {
+    details.refetch()
+  }, [openCashoutForm])
+
   const [cashoutBody, setCashoutBody] = useState({
     amount: "",
     date: "",
@@ -139,13 +143,7 @@ export default function CashoutForm({ openCashoutForm, setOpenCashoutForm }: Cas
                       >
                         {saveCashout.isLoading ? "Loading..." : "Simpan"}
                       </button>
-                      <button
-
-                        onClick={() => setOpenJenisForm(!openJenisForm)}
-                        className="ml-2 inline-flex items-center rounded border border-transparent bg-blue-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                      >
-                        Tambah Jenis
-                      </button>
+                     
                       {saveCashout.isError && (
                         <div className="text-red-500 text-sm ml-2 mt-2">
                           Sila isi semua field
