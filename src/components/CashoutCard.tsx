@@ -42,6 +42,11 @@ export default function CashoutCard({ openCashoutCard, setOpenCashoutCard, date 
                   <div className="px-5 w-full">
                     <h2 className="text-xs leading-3">Cashout items</h2>
                     <h1 className="text-lg font-bold text-gray-800 leading-5 pt-2">{date.toDateString()}</h1>
+                    {getCashoutOnDate.isLoading && (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+                      </div>
+                    )}
                     {getCashoutOnDate.data?.map((cashout) => (
                         <div className="pt-6 relative" key={cashout.id}>
                           <div className="uppercase text-xs text-blue-600 font-bold">RM {cashout.amount}</div>

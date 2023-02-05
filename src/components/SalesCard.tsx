@@ -76,6 +76,12 @@ export default function SalesCard({ type }: SalesCardProps) {
               </button>
             )}
         </div>
+        {type === "aeon" && sales.isLoading && (
+          // loading spinner 
+          <div className="flex justify-center items-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-500"></div>
+          </div>
+        )}
         {type === "aeon" && sales.data?.map((sale, index) =>
           <div className="flex w-2/5 flex-col bg-white overflow-hidden rounded-sm border-b mb-2 cursor-pointer" onClick={() => alert("gk")} key={index}>
             <div className="flex justify-between items-center px-2 py-2">
@@ -89,7 +95,12 @@ export default function SalesCard({ type }: SalesCardProps) {
             </div>
           </div>
         )}
-
+        {type === "cashout" && sales.isLoading && (
+          // loading spinner 
+          <div className="flex justify-center items-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-500"></div>
+          </div>
+        )}
         {type === "cashout" && sales.data?.map((sale, index) =>
         <>
             <div className="flex w-2/5 flex-col bg-white overflow-hidden rounded-sm border-b mb-2 cursor-pointer" onClick={() => handleOpenCashoutCard(sale.date)} key={index}>
